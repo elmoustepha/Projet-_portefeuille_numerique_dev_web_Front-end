@@ -1,6 +1,6 @@
 # Mon Projet Full-Stack: Portefeuille Numérique
 
-Ce projet est un application web full-stack pour gérer un portefeuille numérique, avec un front-end responsive et un back-end sécurisé.
+Application web full-stack pour gérer un portefeuille numérique, avec un front-end responsive et un back-end sécurisé.
 
 ## Technologies Utilisées
 - Front-end: <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" width="20" height="20"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" width="20" height="20"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="20" height="20"> (avec Font Awesome pour les icônes)
