@@ -1,0 +1,240 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.pageTempsreel { 
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Icône du menu - cachée sur desktop, visible sur mobile */
+.IconSidebar {
+    display: none;
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    z-index: 10000;
+    font-size: 24px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+/* Barre latérale (sidebar) */
+.menu {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background: #ffffff;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #334155;
+    font-size: 17px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-top: 9px;
+}
+
+.menu a:hover {
+    background: #eff6ff;
+    color: #3b82f6;
+    transform: translateX(5px);
+}
+
+.menu a.active {
+    background: #dbeafe;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.menu a.logout {
+    color: #dc2626;
+}
+
+.menu a.logout:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Contenu principal */
+.main-content {
+    margin-left: 250px;
+    padding: 40px 30px;
+    width: 100%;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+/* Cartes */
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    width: 60%;
+    max-width: 1000px;
+    min-width: 500px;
+    margin-bottom: 40px;
+}
+
+/* Titre dans la première carte */
+.card h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #1e293b;
+}
+
+/* Liste des prix */
+#prices-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#prices-list li {
+    padding: 14px;
+    margin: 10px 0;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Graphique */
+.chart-wrapper {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+#price-chart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Champ de recherche */
+#search-input {
+    width: 60%;
+    padding: 10px 12px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+#search-results {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#search-results li {
+    padding: 12px;
+    margin: 8px 0;
+    background: #f8fafc;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Overlay pour fermer la sidebar sur mobile */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Afficher l'icône du menu sur mobile */
+    .IconSidebar {
+        display: block;
+    }
+
+    /* Cacher la sidebar sur mobile par défaut */
+    .menu {
+        transform: translateX(-100%);
+    }
+
+    .menu a {
+    margin-top: 9px;
+    }
+
+    /* Ouvrir la sidebar sur mobile */
+    .menu.open {
+        transform: translateX(0);
+    }
+
+
+    .main-content {
+        margin-left: 0;
+        padding: 55px 15px;
+    }
+
+    /* Afficher overlay lors de l'ouverture de la sidebar */
+    .overlay.show {
+        display: block;
+    }
+
+    .card {
+        width: 100%;
+        min-width: unset;
+        padding: 25px;
+    }
+
+    #search-input {
+        width: 100%;
+    }
+
+    .chart-wrapper {
+        height: 300px;
+    }
+
+    #prices-list {
+        max-height: 200px;
+        margin-bottom: 30px;
+    }
+}

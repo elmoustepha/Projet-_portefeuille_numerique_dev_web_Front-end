@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profil Utilisateur - Portefeuille Numérique</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div class="pageProfile">
+    <!-- Icône du menu pour mobile -->
+    <div class="IconSidebar" onclick="toggleSidebar()"> ☰ </div>
+<br>  
+    <nav class="menu" id="sidebar">
+        <div class="top-links">
+            <a href="accueil.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="accounts.html"><i class="fas fa-wallet"></i> Gestion de Portefeuille</a>
+            <a href="tempsreel.html"><i class="fas fa-chart-line"></i> Cours en Temps Réel</a>
+            <a class="active" href="profile.html"><i class="fas fa-user"></i> Profil Utilisateur</a>
+        </div>
+        <a href="connexion.html" class="logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Déconnecter</a>
+    </nav>
+
+    <div class="main-content" id="mainContent">
+        <h1>Profil Utilisateur</h1>
+        <p class="intro">Modifiez vos informations personnelles et consultez la liste des utilisateurs.</p>
+
+        <div class="card">
+            <h2><i class="fas fa-user-edit"></i> Modifier un utilisateur</h2>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+                <br>
+                <input type="text" id="name" placeholder="Nom" required>
+                <br>
+                <input type="email" id="email" placeholder="Email" required>
+                <br>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <br>
+                <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" required>
+                <br>
+                <button class="btn-primary" type="button" onclick="submitForm()">Mettre à jour</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-users"></i> Tous les utilisateurs</h2>
+            <div class="table-container">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- rempli dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Overlay pour fermer la sidebar sur mobile -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

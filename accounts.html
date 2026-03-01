@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Gestion de Portefeuille - Portefeuille Numérique</title>
+    <link rel="stylesheet" href="accounts.css">
+</head>
+<body>
+
+<div class="pageAccounts">
+    <!-- Icône du menu pour mobile -->
+    <div class="IconSidebar" onclick="toggleSidebar()">☰</div>
+    <br> <br> 
+
+    <nav class="menu" id="sidebar">
+        <div class="top-links">
+            <a href="accueil.html"><i class="fas fa-home"></i> Accueil</a>
+            <a class="active" href="accounts.html"><i class="fas fa-wallet"></i> Gestion de Portefeuille</a>
+            <a href="tempsreel.html"><i class="fas fa-chart-line"></i> Cours en Temps Réel</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profil Utilisateur</a>
+        </div>
+        <a href="connexion.html" class="logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Déconnecter</a>
+    </nav>
+
+    <div class="content" id="mainContent">
+        <h1>Gestion de votre Portefeuille</h1>
+        <p class="intro">Ajoutez, transférez et suivez vos crypto-monnaies en toute simplicité.</p>
+
+        <section class="section-card">
+            <h2><i class="fas fa-plus-circle"></i> Ajouter une cryptomonnaie</h2>
+            <form id="addCryptoForm" class="form-grid">
+                <input type="text" id="cryptoName" placeholder="Nom (ex: Bitcoin)" required>
+                <br>
+                <input type="number" step="any" id="cryptoQuantite" placeholder="Quantité" required min="0.00000001">
+                <br>
+                <button class="btn-primary" type="button" onclick="addCrypto()">Ajouter</button>
+            </form>
+        </section>
+
+        <section class="section-card">
+            <h2><i class="fas fa-coins"></i> Vos Cryptomonnaies</h2>
+            <button class="btn-secondary" type="button" onclick="showCryptos()">Afficher la liste</button>
+            <div class="table-container">
+                <table id="cryptoTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Date d'ajout</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- rempli dynamiquement -->
+                    </tbody>
+                </table>
+                <!-- Pagination pour les cryptomonnaies -->
+                <div class="pagination" id="cryptoPagination" style="display: none;">
+                    <button onclick="prevCryptoPage()"> < </button>
+                    <span id="cryptoPageInfo">Page 1</span>
+                    <button onclick="nextCryptoPage()">></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2><i class="fas fa-exchange-alt"></i> Transférer une cryptomonnaie</h2>
+            <form id="addTransfersForm" class="form-grid">
+                <input type="text" id="sourceName" placeholder="Source (ex: Mon portefeuille)" required>
+                <br>
+                <input type="text" id="destinationName" placeholder="Destination (adresse ou nom)" required>
+                <br>
+                <input type="number" step="any" id="transfersQuantite" placeholder="Quantité" required min="0.00000001">
+                <br>
+                <button class="btn-primary" type="button" onclick="addTransfers()">Transférer</button>
+            </form>
+        </section>
+
+        <section class="section-card">
+            <h2><i class="fas fa-history"></i> Historique des transferts</h2>
+            <button class="btn-secondary" type="button" onclick="showTransfers()">Afficher l'historique</button>
+            <div class="table-container">
+                <table id="transferTable">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Quantité</th>
+                            <th>Date de transfert</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- rempli dynamiquement -->
+                    </tbody>
+                </table>
+                <!-- Pagination pour les transferts -->
+                <div class="pagination" id="transferPagination" style="display: none;">
+                    <button onclick="prevTransferPage()"> < </button>
+                    <span id="transferPageInfo">Page 1</span>
+                    <button onclick="nextTransferPage()"> > </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Overlay pour fermer la sidebar sur mobile -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+</div>
+
+<script src="accounts.js"></script>
+</body>
+</html>

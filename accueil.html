@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Accueil - Portefeuille Numérique</title>
+    <link rel="stylesheet" href="accueil.css">
+</head>
+<body>
+
+<div class="pageAccueil">
+    <!-- Icône du menu pour mobile -->
+    <div class="IconSidebar" onclick="toggleSidebar()"> ☰ </div>
+    <br> 
+    <nav class="menu" id="sidebar">
+        <!-- Liens principaux -->
+        <div class="top-links">
+            <a class="active" href="accueil.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="accounts.html"><i class="fas fa-wallet"></i> Gestion de Portefeuille</a>
+            <a href="tempsreel.html"><i class="fas fa-chart-line"></i> Cours en Temps Réel</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profil Utilisateur</a>
+        </div>
+
+        <!-- Déconnecter en bas -->
+        <a href="connexion.html" class="logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Déconnecter</a>
+    </nav>
+
+    <main class="content" id="mainContent">
+        <h1>Bienvenue dans votre Portefeuille Numérique</h1>
+        <p class="intro">Gérez facilement vos crypto-monnaies.</p>
+
+        <div class="cards">
+            <section class="card">
+                <h2><i class="fas fa-cog"></i> Services offerts</h2>
+                <p>Gestion complète de votre portefeuille, suivi des soldes, historique des transactions et échange sécurisé de crypto-monnaies.</p>
+            </section>
+
+            <section class="card">
+                <h2><i class="fas fa-coins"></i> Crypto-monnaies supportées</h2>
+                <ul>
+                    <li>Bitcoin (BTC)</li>
+                    <li>Ethereum (ETH)</li>
+                    <li>Binance Coin (BNB)</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Overlay pour fermer la sidebar sur mobile -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+</div>
+
+<script>
+
+    // Fonction pour déconnecter (si nécessaire, ajouter logique ici)
+function logout() {
+    // Logique de déconnexion, par exemple redirection
+    window.location.href = 'connexion.html';
+}
+
+// Fonctions pour la sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+}
+</script>
+</body>
+</html>

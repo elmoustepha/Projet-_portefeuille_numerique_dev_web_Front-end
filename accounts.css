@@ -1,0 +1,341 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.pageAccounts { 
+    min-height: 100vh; 
+}
+
+/* Icône du menu - cachée sur desktop, visible sur mobile */
+.IconSidebar {
+    display: none;
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    z-index: 10000;
+    font-size: 24px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+/* Barre latérale */
+.menu {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background: #ffffff;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #334155;
+    font-size: 17px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-top: 9px;
+}
+
+.menu a:hover {
+    background: #eff6ff;
+    color: #3b82f6;
+    transform: translateX(5px);
+}
+
+.menu a.active {
+    background: #dbeafe;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.menu a.logout {
+    color: #dc2626;
+}
+
+.menu a.logout:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Contenu principal */
+.content {
+    margin-left: 280px;
+    padding: 40px 5px;
+    background: #f8fafc;
+    transition: margin-left 0.3s ease;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.intro {
+    font-size: 18px;
+    color: #64748b;
+    margin-bottom: 50px;
+}
+
+/* Cartes pour chaque section */
+.section-card {
+    width: 55%;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+}
+
+.section-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-card h2 i {
+    color: #3b82f6;
+    font-size: 26px;
+}
+
+/* Formulaires */
+.form-grid {
+    display: grid;
+    align-items: end;
+}
+
+input {
+    width: 60%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Boutons */
+.btn-primary {
+    padding: 14px 24px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.3s;
+    justify-self: start;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-secondary {
+    padding: 12px 20px;
+    background-color: #e2e8f0;
+    color: #334155;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+/* Tableau */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #eeefef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #c9d2de;
+}
+
+th {
+    background-color: #1e293b;
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+td button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+td button:hover {
+    background-color: #dc2626;
+}
+
+/* Overlay pour fermer la sidebar sur mobile */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+     /* Afficher l'icône du menu sur mobile */
+    .IconSidebar {
+        display: block;
+    }
+
+    /* Cacher la sidebar sur mobile par défaut */
+    .menu {
+        transform: translateX(-100%);
+    }
+
+    .menu a {
+    margin-top: 9px;
+    }
+
+    /* Ouvrir la sidebar sur mobile */
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+
+   /* Afficher overlay lors de l'ouverture de la sidebar */
+    .overlay.show {
+        display: block;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-left: 0;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+
+    .section-card {
+        width: 100%;
+        min-width: unset;
+        padding: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .btn-primary {
+        width: 41%;
+        justify-self: stretch;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px 6px;
+    }
+}
+
+/* Masquer les tableaux complètement par défaut */
+.table-container {
+    display: none;
+}
+
+/* Afficher les tableaux lorsqu'on ajoute la classe 'show' */
+.table-container.show {
+    display: block;
+}
+
+/* Styles pour la pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pagination button:hover {
+    background-color: #2563eb;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
